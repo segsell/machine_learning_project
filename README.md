@@ -38,6 +38,8 @@ $ conda activate machine
 $ conda env update -f environment.yml
 ```
 
+Note that you need to deactivate and reactivate ```machine``` in order for the package changes to become effective.
+
 ## Contribution
 Open terminal and navigate to the project folder. 
 Make sure your local repository is up-to-date with the remote repository on GitHub. 
