@@ -1,0 +1,25 @@
+name: machine
+
+channels:
+  - defaults
+  - conda-forge
+
+dependencies:
+  - python=3.7
+  - pip
+
+  - ipykernel
+  - jupyterlab
+  - nb_conda_kernels
+
+  - econml
+  - matplotlib
+  - numpy
+  - numba
+  - pandas
+  - scikit-learn
+  - scipy
+  - seaborn
+
+  - black
+  - flake8
