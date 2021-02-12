@@ -1,3 +1,5 @@
+[![Contributors][contributors-badge]][contributors-url]
+
 # Machine Learning Project
 Repository containing material for our machine learning project. 
 
