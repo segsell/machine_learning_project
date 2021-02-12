@@ -6,11 +6,8 @@ Assuming you have already installed conda (if not, download the [conda package m
 open terminal (on MacOS and Ubuntu) or any other terminal emulator of your choice (e.g. [PowerShell](https://docs.microsoft.com/en-us/powershell/) on Windows, which - disclaimer - I haven't used personally). Next, navigate to the folder where you want the repository to be downloaded. Then run
 
 ```console
-git clone https://github.com/segsell/machine_learning_project.git
+$ git clone https://github.com/segsell/machine_learning_project.git
 ```
-
-https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository
-
 
 
 ## 2) Activate *conda* Environment
