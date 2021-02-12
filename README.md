@@ -71,4 +71,5 @@ and ```<commit message>``` is the message you include to describe what you did, 
 For example, the message could read *"Add module sentiment_analysis"*.
 
 
+[contributors-badge]: https://img.shields.io/github/contributors/segsell/machine_learning_projects
 [contributors-url]: https://github.com/segsell/machine_learning_project/graphs/contributors
