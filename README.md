@@ -37,10 +37,20 @@ $ conda env update -f environment.yml
 ```
 
 ## Contribution
+Open terminal and navigate to the project folder. 
+Make sure your local repository is up-to-date with the remote repository on GitHub. 
+To do so, run
+
+```console
+$ git pull
+```
+
+which downloads all the latest contributions other team members have made on the remote repository.
+
+
 If you have any data files, Python scripts or notebooks you want to upload, follow these steps.
 
-Open terminal and navigate to the project folder. 
-Check which files have been added, modified or deleted
+Check which files you have added, modified or deleted
 
 ```console
 $ git status
