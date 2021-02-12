@@ -1,9 +1,9 @@
-# machine_learning_project
+# Machine Learning Project
 Repository containing material for our machine learning project. 
 
 ## 1) Clone the Repository
 Assuming you have already installed conda (if not, download the [conda package manager](https://docs.conda.io/en/latest/) first), 
-open terminal (on MacOS and Ubuntu) or any other terminal emulator of your choice (e.g. [PowerShell](https://docs.microsoft.com/en-us/powershell/) on Windows, which - disclaimer - I haven't used personally). Next, navigate to the folder where you want the repository to be downloaded. Then run
+open terminal (on MacOS and Ubuntu) or any other terminal emulator of your choice (e.g. [PowerShell](https://docs.microsoft.com/en-us/powershell/) on Windows, which - disclaimer - I have no personal experience with). Next, navigate to the folder where you want the repository to be downloaded. Then run
 
 ```console
 $ git clone https://github.com/segsell/machine_learning_project.git
@@ -39,10 +39,16 @@ $ conda env update -f environment.yml
 ## Contribution
 If you have any data files, Python scripts or notebooks you want to upload, follow these steps.
 
-Open terminal and navigate to the project folder. Then run
+Open terminal and navigate to the project folder. 
+Check which files have been added, modified or deleted
 
 ```console
 $ git status
+```
+
+Then run
+
+```console
 $ git add <file>
 $ git commit -m "<commit message>"
 $ git push 
