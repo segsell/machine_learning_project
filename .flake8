@@ -1,0 +1,15 @@
+[flake8]
+select = ANN,B,B9,BLK,C,D,DAR,E,F,S,W
+ignore = E203,E501,W503
+# E203: Whitespace before ':'
+# E501: Line too long
+# W503: Linebreak before binary operator
+
+max-line-length = 80
+# Bugbear allows 10% more characters (i.e. 88)
+
+max-complexity = 10
+application_import_names = src
+import-order-style = google
+
+docstring-convention = google
