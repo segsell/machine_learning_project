@@ -39,7 +39,6 @@ repos:
             flake8-comprehensions,
             flake8-docstrings,
             flake8-eradicate,
-            flake8-import-order,
             flake8-pytest-style,
             flake8-todo,
             flake8-unused-arguments,
