@@ -1,8 +1,9 @@
 [flake8]
 select = ANN,B,B9,BLK,C,D,DAR,E,F,S,W
-ignore = E203,E501,W503
+ignore = E203,E501,E712,W503
 # E203: Whitespace before ':'
 # E501: Line too long
+# E712: Comparison to true should be 'if cond is true:' or 'if cond:'
 # W503: Linebreak before binary operator
 
 max-line-length = 80
