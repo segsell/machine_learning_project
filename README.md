@@ -91,15 +91,15 @@ to unstage all added files (which have not been commited and pushed to the remot
 
 
 ## Pre-commit Hooks
-Next, make sure to run 
+Before you make your first commit, make sure to run 
 
 ```console
 $ pre-commit install
 ```
 
-once before your first commit in order to enable pre-commit hooks (located in the ```.pre-commit-config.yaml```).
+once in order to enable pre-commit hooks in your local repository (located in the ```.pre-commit-config.yaml```).
 
-From now on, every time you commit something a number of checks (concerning code style etc.) are run. 
+From now on, every time you commit something, a number of checks regarding code style etc. are run. 
 If all checks pass, your commit is accepted can be pushed to the remote repository via ```git push```.
 If not, you are prompted to make certain changes.
 
