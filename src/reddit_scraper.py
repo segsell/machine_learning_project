@@ -36,7 +36,7 @@ def scrape_reddit_data(
         save_as: Path to save data (csv format).
 
     Returns:
-        DataFrame containing all reddit submissions (or comments) of the
+        data_all: DataFrame containing all reddit submissions (or comments) of the
         provided time frame.
 
     """
