@@ -40,6 +40,7 @@ $ conda env update -f environment.yml
 
 Note that you need to deactivate and reactivate ```machine``` in order for the package changes to become effective.
 
+
 ## Contribution
 Open terminal and navigate to the project folder. 
 Make sure your local repository is up-to-date with the remote repository on GitHub. 
@@ -49,10 +50,10 @@ To do so, run
 $ git pull
 ```
 
-which downloads all the latest contributions other team members have made on the remote repository.
+which downloads all the latest contributions other team members have made and already pushed to the remote repository.
 
 
-If you have any data files, Python scripts or notebooks you want to upload, follow these steps.
+If you have any data files, Python scripts or notebooks you want to upload, put them in the ```src``` folder.
 
 Check which files you have added, modified or deleted
 
@@ -71,6 +72,44 @@ $ git push
 where ```<file>``` is the name of the file you want to upload, e.g. *reddit_data.csv* or *process_reddit_data.ipynb*,
 and ```<commit message>``` is the message you include to describe what you did, which files you added, modified etc. 
 For example, the message could read *"Add module sentiment_analysis"*.
+
+Let's say you have added a couple of files via ```git add <file>``` but have chaned your mind and do not want to commit them.
+Then you simply type 
+
+```console
+$ git reset <file>
+```
+to remove (i.e. unstage) a file from your staged files (note that the file itself is NOT deleted and remains on your machine unchanged),
+
+or
+
+```console
+$ git reset
+```
+
+to unstage all added files (which have not been commited and pushed to the remote repository yet).
+
+
+## Pre-commit Hooks
+Next, make sure to run 
+
+```console
+$ pre-commit install
+```
+
+once before your first commit in order to enable pre-commit hooks (located in the ```.pre-commit-config.yaml```).
+
+From now on, every time you commit something a number of checks (concerning code style etc.) are run. 
+If all checks pass, your commit is accepted can be pushed to the remote repository via ```git push```.
+If not, you are prompted to make certain changes.
+
+Once pre-commit is installed, you can also run pre-commit manually, by simply typing
+```console
+$ pre-commit
+```
+
+which runs the checks on all files you have added via ```git add <file>```.
+
 
 
 [contributors-badge]: https://img.shields.io/github/contributors/segsell/machine_learning_project
