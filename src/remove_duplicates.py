@@ -10,7 +10,7 @@ def remove_duplicates(
     """Remove duplicate rows from reddit data.
 
     Observations qualify as duplicate if a given ("title", "author") pair
-    appears multiple times. In such a case, their corresponding "num_comments"
+    appears multiple times. In such a case, their "score" and "num_comments"
     are added up and only the first observation (by "date") is kept.
 
     Arguments:
@@ -21,20 +21,33 @@ def remove_duplicates(
         data_clean: Clean data without duplicates.
 
     """
+    cols = [
+        "title",
+        "date",
+        "score",
+        "num_comments",
+        "num_crossposts",
+        "total_awards_received",
+        "author",
+    ]
+    data = data[cols]
+
     duplicates = data[
         data[["title", "author"]].duplicated(keep=False) == True
     ].sort_values(["title", "num_comments"], ascending=False)
     data_no_dup = data.drop(duplicates.index)
 
+    sum_score = duplicates.groupby(["author", "title"])["score"].sum().to_frame()
     sum_comments = (
         duplicates.groupby(["author", "title"])["num_comments"].sum().to_frame()
     )
-    data_sum_comments = duplicates.sort_values(
+    data_sum_score_comments = duplicates.sort_values(
         ["author", "date"], ascending=True
     ).drop_duplicates(["title", "author"], keep="first")
-    data_sum_comments["num_comments"] = list(sum_comments["num_comments"])
+    data_sum_score_comments["score"] = list(sum_score["score"])
+    data_sum_score_comments["num_comments"] = list(sum_comments["num_comments"])
 
-    data_clean = pd.concat([data_no_dup, data_sum_comments])
+    data_clean = pd.concat([data_no_dup, data_sum_score_comments])
     data_clean = data_clean.sort_values(["date"])
     data_clean = data_clean.reset_index(drop=True)
 
