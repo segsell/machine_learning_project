@@ -11,6 +11,7 @@ dependencies:
   - ipykernel
   - jupyterlab
   - nb_conda_kernels
+  - nb_black
 
   - econml
   - matplotlib
@@ -27,3 +28,4 @@ dependencies:
 
   - pip:
     - monkeylearn
+    - yfinance
