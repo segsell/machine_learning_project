@@ -155,9 +155,8 @@ def merge_reddit_and_stock_data(
         on=date_col,
     )
 
-    # Merge
     reddit_with_date.reset_index(level=0, inplace=True)
-    data_merge = pd.merge(reddit_with_date, stock_data, how="inner", on=date_col)
+    data_merge = pd.merge(reddit_with_date, stock_data, how="right", on=date_col)
 
     return data_merge
 
