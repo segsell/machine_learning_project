@@ -58,6 +58,7 @@ def add_word_counter(
     text_col: str,
     buzz_words: Union[str, List[str]],
     counter_col: Optional[str] = None,
+    case_sensitive: bool = False,
 ) -> pd.DataFrame:
     """Count mentions of buzz words in reddit submissions."""
     if counter_col is None:
@@ -71,7 +72,7 @@ def add_word_counter(
             buzz_words = "|".join(buzz_words)
 
     data[counter_col] = np.where(
-        data["title"].str.contains(buzz_words, case=False), 1, 0
+        data["title"].str.contains(buzz_words, case=case_sensitive), 1, 0
     )
     data_counter = data.copy()
     data_counter = data_counter[data_counter[counter_col] == 1]
@@ -93,18 +94,23 @@ def analyze_sentiment(df: pd.DataFrame, text_col: str) -> pd.DataFrame:
     return df
 
 
-def create_date_cols_reddit_data(data: pd.DataFrame, date_col: str) -> pd.DataFrame:
+def create_date_cols_reddit_data(df: pd.DataFrame, date_col: str) -> pd.DataFrame:
     """Create hourly and daily date columns in stock price data."""
-    data = col_to_datetime(data, date_col)
+    df = col_to_datetime(df, date_col)
 
-    data["date_hour"] = data[date_col].dt.ceil("H")
-    data["date_day"] = data[date_col].dt.floor("D")
+    df["date_hour"] = df[date_col].dt.ceil("H")
+    df["date_day"] = df[date_col].dt.floor("D")
 
-    return data
+    return df
 
 
-def create_date_cols_stock_data(data: pd.DataFrame, date_col: str) -> pd.DataFrame:
+def create_date_cols_stock_data(
+    df: pd.DataFrame, date_col: str, stock_name: str, stock_col: str = "symbol"
+) -> pd.DataFrame:
     """Create hourly and daily date columns in stock price data."""
+    df = df.loc[df[stock_col] == stock_name]
+    data = df.copy()
+
     data["date_day"] = data[date_col].str.replace("T", " ")
     data["date_day"] = data["date_day"].str.replace("Z", "")
 
