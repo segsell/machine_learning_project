@@ -23,31 +23,49 @@ def remove_duplicates(
     """
     cols = [
         "title",
+        "stickied",
         "date",
         "score",
+        "upvote_ratio",
         "num_comments",
         "num_crossposts",
-        "total_awards_received",
+        "subreddit_subscribers",
         "author",
+        "author_fullname",
+        "author_premium",
+        "no_follow",
+        "all_awardings",
+        "total_awards_received",
+        "is_video",
+        "id",
     ]
     data = data[cols]
 
     duplicates = data[
         data[["title", "author"]].duplicated(keep=False) == True
     ].sort_values(["title", "num_comments"], ascending=False)
-    data_no_dup = data.drop(duplicates.index)
+    data_dups_dropped = data.drop(duplicates.index)
 
     sum_score = duplicates.groupby(["author", "title"])["score"].sum().to_frame()
     sum_comments = (
         duplicates.groupby(["author", "title"])["num_comments"].sum().to_frame()
     )
-    data_sum_score_comments = duplicates.sort_values(
+    sum_awards = (
+        duplicates.groupby(["author", "title"])["total_awards_received"]
+        .sum()
+        .to_frame()
+    )
+
+    data_sum_score_comments_awards = duplicates.sort_values(
         ["author", "date"], ascending=True
     ).drop_duplicates(["title", "author"], keep="first")
-    data_sum_score_comments["score"] = list(sum_score["score"])
-    data_sum_score_comments["num_comments"] = list(sum_comments["num_comments"])
+    data_sum_score_comments_awards["score"] = list(sum_score["score"])
+    data_sum_score_comments_awards["num_comments"] = list(sum_comments["num_comments"])
+    data_sum_score_comments_awards["total_awards_received"] = list(
+        sum_awards["total_awards_received"]
+    )
 
-    data_clean = pd.concat([data_no_dup, data_sum_score_comments])
+    data_clean = pd.concat([data_dups_dropped, data_sum_score_comments_awards])
     data_clean = data_clean.sort_values(["date"])
     data_clean = data_clean.reset_index(drop=True)
 
@@ -59,5 +77,5 @@ def remove_duplicates(
 
 
 if __name__ == "__main__":
-    data = pd.read_csv("data/wsb_jan_01_feb_05_raw.csv")
-    data_clean = remove_duplicates(data, save_as="data/wsb_jan_01_feb_05_clean.csv")
+    data = pd.read_csv("data/wsb_sep_01_feb_28_raw.csv")
+    data_clean = remove_duplicates(data, save_as="data/wsb_sep_01_feb_28.csv")

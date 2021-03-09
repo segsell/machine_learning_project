@@ -44,19 +44,27 @@ def scrape_reddit_data(
     filtered_columns = [
         "subreddit",
         "subreddit_id",
+        "subreddit_subscribers",
         "title",
+        "is_original_data",
         "created_utc",
         "retrieved_on",
         "score",
+        "upvote_ratio",
         "num_comments",
         "num_crossposts",
+        "cross_postable",
         "domain",
         "full_link",
         "author",
         "author_fullname",
+        "author_premium",
+        "no_follow",
         "all_awardings",
         "total_awards_received",
+        "is_video",
         "id",
+        "link_id",
         "url",
         "permalink",
     ]
@@ -139,20 +147,28 @@ def process_scraped_df(data: pd.DataFrame) -> pd.DataFrame:
     col_list = [
         "subreddit",
         "subreddit_id",
+        "subreddit_subscribers",
         "title",
+        "is_original_data",
         "date",
         "created_utc",
         "retrieved_on",
         "score",
+        "upvote_ratio",
         "num_comments",
         "num_crossposts",
+        "cross_postable",
         "domain",
         "full_link",
         "author",
         "author_fullname",
+        "author_premium",
+        "no_follow",
         "all_awardings",
         "total_awards_received",
+        "is_video",
         "id",
+        "link_id",
         "url",
         "permalink",
     ]
@@ -169,12 +185,12 @@ def process_scraped_df(data: pd.DataFrame) -> pd.DataFrame:
 if __name__ == "__main__":
     subreddit = "wallstreetbets"
     url_submissions = "https://api.pushshift.io/reddit/search/submission"
-    before = int(datetime(2021, 2, 5, 0, 0).timestamp())  # Feb 5th 2021
-    after = int(datetime(2021, 1, 1, 0, 0).timestamp())  # Jan 1st 2021
+    before = int(datetime(2021, 2, 21, 0, 0).timestamp())  # Feb 5th 2021
+    after = int(datetime(2021, 1, 31, 0, 0).timestamp())  # Jan 1st 2021
     data = scrape_reddit_data(
         subreddit,
         url_submissions,
         before,
         after,
-        save_as="data/wsb_jan_01_feb_05_raw.csv",
+        save_as="data/wsb_sep_01_feb_28_raw.csv",
     )

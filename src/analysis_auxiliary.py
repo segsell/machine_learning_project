@@ -19,7 +19,7 @@ def plot(
     stock_name: Optional[str] = "GME",
     save_as: Optional[str] = None,
 ) -> None:
-    """Plot count variable and, optionally, stock price over time."""
+    """Plot count variable and stock price over time."""
     ax = plt.figure(figsize=(17.5, 10)).add_subplot(111)
 
     plt.xticks(rotation=90)
