@@ -1,7 +1,9 @@
 [![Contributors][contributors-badge]][contributors-url]
 
 # Machine Learning Project
-Repository containing material for our machine learning project. 
+Repository containing material for our machine learning project.
+
+View the analysis notebook [here](https://nbviewer.jupyter.org/github/segsell/machine_learning_project/blob/main/src/analysis_notebook.ipynb).
 
 ## 1) Clone the Repository
 Assuming you have already installed conda (if not, download the [conda package manager](https://docs.conda.io/en/latest/) first), 
