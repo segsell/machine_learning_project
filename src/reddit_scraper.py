@@ -185,8 +185,8 @@ def process_scraped_df(data: pd.DataFrame) -> pd.DataFrame:
 if __name__ == "__main__":
     subreddit = "wallstreetbets"
     url_submissions = "https://api.pushshift.io/reddit/search/submission"
-    before = int(datetime(2021, 2, 21, 0, 0).timestamp())  # Feb 28th 2021
-    after = int(datetime(2021, 1, 31, 0, 0).timestamp())  # Sep 1st 2020
+    before = int(datetime(2021, 2, 28, 0, 0).timestamp())  # Feb 28th 2021
+    after = int(datetime(2020, 9, 1, 0, 0).timestamp())  # Sep 1st 2020
     data = scrape_reddit_data(
         subreddit,
         url_submissions,
