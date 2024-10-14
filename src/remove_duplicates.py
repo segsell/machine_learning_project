@@ -1,4 +1,5 @@
 """Remove duplicates from reddit data."""
+
 from typing import Optional
 
 import pandas as pd
