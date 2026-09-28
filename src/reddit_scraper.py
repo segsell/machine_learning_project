@@ -1,4 +1,5 @@
 """Reddit scraper."""
+
 import time
 from datetime import datetime
 from typing import Any
@@ -7,7 +8,6 @@ from typing import Optional
 
 import pandas as pd
 import requests
-
 
 JsonDict = Dict[str, Any]
 
